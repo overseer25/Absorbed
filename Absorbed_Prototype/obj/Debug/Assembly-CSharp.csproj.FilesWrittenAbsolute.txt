@@ -1,0 +1,13 @@
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/UnityEngine.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/UnityEditor.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Yawmus/Documents/Absorbed/Absorbed_Prototype/Temp/bin/Debug/Mono.Cecil.Mdb.dll
