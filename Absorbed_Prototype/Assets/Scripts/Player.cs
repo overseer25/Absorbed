@@ -4,8 +4,8 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public float speed = 6.0f;
-	public float jumpSpeed = 8f;
-	public float gravity = 20f;
+	public float jumpSpeed = 20f;
+	float gravity = 40f;
 	private RaycastHit hit;
 
 	public float sensitivityX = 15F;
@@ -27,24 +27,50 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 moveDirection = Vector3.zero;
-
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
 
 		rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 		rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-
+		/*
 		if (cc.isGrounded) {
 			moveDirection = (transform.forward * v + transform.right * h) * speed;
 			moveDirection.y = 0;
-			//if (Input.GetButton ("Jump"))
-			//	moveDirection.y += jumpSpeed;
+			if (Input.GetButton ("Jump"))
+				moveDirection.y = jumpSpeed;
 		}
-		moveDirection.y -= gravity * Time.deltaTime;
-
-		cc.Move(moveDirection * Time.deltaTime);
+		moveDirection.y -= gravity;
+*/
 		transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+
+
+
+
+		if (cc.isGrounded) {
+			// We are grounded, so recalculate
+			// move direction directly from axes
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = transform.TransformDirection(moveDirection);
+			moveDirection *= speed;
+
+			if (Input.GetButton ("Jump")) {
+				moveDirection.y = jumpSpeed;
+			}
+		}
+		else {
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
+			moveDirection = transform.TransformDirection(moveDirection);
+			moveDirection.x *= speed;
+			moveDirection.z *= speed;
+		}
+
+
+		moveDirection.y -= gravity * Time.deltaTime;
+		cc.Move(moveDirection * Time.deltaTime);
+
+
+
 
 		if (grabbedOrb == null) {
 			Ray ray = Camera.main.ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
