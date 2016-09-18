@@ -26,4 +26,9 @@ public class LevelManager : MonoBehaviour {
 			Debug.Log ("Level Complete - open door");
 		}
 	}
+
+	public void ExitLevel()
+	{
+		Application.LoadLevel("MainMenu");
+	}
 }
