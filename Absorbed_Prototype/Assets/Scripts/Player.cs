@@ -4,8 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public float speed = 6.0f;
-	public float jumpSpeed = 20f;
-	float gravity = 40f;
+	public float jumpSpeed = 4f;
+	float gravity = 9.8f;
+	float vSpeed = 0;
 	private RaycastHit hit;
 
 	public float sensitivityX = 15F;
@@ -26,48 +27,30 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 moveDirection = Vector3.zero;
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+		Vector3 vel = (transform.forward * v + transform.right * h) * speed;
 
 		rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 		rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
-		/*
-		if (cc.isGrounded) {
-			moveDirection = (transform.forward * v + transform.right * h) * speed;
-			moveDirection.y = 0;
-			if (Input.GetButton ("Jump"))
-				moveDirection.y = jumpSpeed;
-		}
-		moveDirection.y -= gravity;
-*/
+
 		transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 
-
-
-
 		if (cc.isGrounded) {
+			vSpeed = 0;
 			// We are grounded, so recalculate
 			// move direction directly from axes
-			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			moveDirection = transform.TransformDirection(moveDirection);
-			moveDirection *= speed;
 
 			if (Input.GetButton ("Jump")) {
-				moveDirection.y = jumpSpeed;
+				vSpeed = jumpSpeed;
 			}
 		}
-		else {
-			moveDirection = new Vector3(Input.GetAxis("Horizontal"), moveDirection.y, Input.GetAxis("Vertical"));
-			moveDirection = transform.TransformDirection(moveDirection);
-			moveDirection.x *= speed;
-			moveDirection.z *= speed;
-		}
+		vSpeed -= gravity * Time.deltaTime;
+		vel.y = vSpeed;
 
 
-		moveDirection.y -= gravity * Time.deltaTime;
-		cc.Move(moveDirection * Time.deltaTime);
+		cc.Move(vel * Time.deltaTime);
 
 
 
@@ -102,6 +85,18 @@ public class Player : MonoBehaviour {
 				b.GetComponent<Rigidbody>().velocity = cc.velocity;
 				foreach(Collider c in grabbedOrb.GetComponents<Collider>())
 					c.enabled = true;
+				grabbedOrb = null;
+			}
+			else if(Input.GetButtonDown("Throw")){
+				Vector3 pos = Camera.main.transform.position + (Camera.main.transform.forward * .35f);
+				Orb b = grabbedOrb.GetComponent<Orb>();
+				grabbedOrb.transform.position = pos;
+				b.GetComponent<Rigidbody>().WakeUp();
+				b.GetComponent<Rigidbody>().useGravity = true;
+				b.GetComponent<Rigidbody>().isKinematic = false;
+				foreach(Collider c in grabbedOrb.GetComponents<Collider>())
+					c.enabled = true;
+				b.GetComponent<Rigidbody> ().AddForce (transform.forward * 500);
 				grabbedOrb = null;
 			}
 		}

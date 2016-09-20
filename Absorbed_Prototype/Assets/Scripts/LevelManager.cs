@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour {
 
 	List<Bin> bins = new List<Bin>();
+	GameObject finishZone;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +13,8 @@ public class LevelManager : MonoBehaviour {
 		foreach (Transform child in GameObject.Find("Bins").transform) {
 			bins.Add(child.GetComponent<Bin>());
 		}
+		finishZone = transform.FindChild ("FinishZone").gameObject;
+		finishZone.GetComponent<MeshRenderer> ().material.color = Color.black;
 	}
 	
 	// Update is called once per frame
@@ -23,8 +26,12 @@ public class LevelManager : MonoBehaviour {
 
 		// Open door, level complete
 		if (temp) {
+			finishZone.GetComponent<MeshRenderer> ().material.color = Color.white;
+			finishZone.GetComponent<FinishZone> ().enabled = true;
 			Debug.Log ("Level Complete - open door");
 		}
+		else
+			finishZone.GetComponent<FinishZone> ().enabled = false;
 	}
 
 	public void ExitLevel()

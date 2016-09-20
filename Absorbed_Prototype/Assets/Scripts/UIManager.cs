@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour {
 	}
 
 	void Awake(){
-
 		Time.timeScale = 1.0f;
 	}
 	
