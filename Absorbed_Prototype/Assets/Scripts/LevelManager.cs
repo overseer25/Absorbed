@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		finishZone = transform.FindChild ("FinishZone").gameObject;
 		finishZone.GetComponent<MeshRenderer> ().material.color = Color.black;
+		finishZone.GetComponent<FinishZone> ().enabled = false;
 	}
 	
 	// Update is called once per frame

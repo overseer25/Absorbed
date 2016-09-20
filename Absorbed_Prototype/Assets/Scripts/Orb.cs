@@ -12,7 +12,7 @@ public class Orb : MonoBehaviour {
 	int mod = 1;
 	[HideInInspector]
 	public bool grabbed = false;
-	public enum Type { Basic, Speed, Fire }
+	public enum Type { Flip, Speed, Fire, Basic }
 
 	public Type type = Type.Basic;
 

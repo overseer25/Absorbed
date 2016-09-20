@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 	public float minimumY = -60F;
 	public float maximumY = 60F;
 	float rotationY = 0f;
-
+	bool absorbed = false;
 	public Orb grabbedOrb;
 	private CharacterController cc;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		int mod = -1;
 		float h = Input.GetAxis("Horizontal");
 		float v = Input.GetAxis("Vertical");
 		float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
@@ -46,14 +47,23 @@ public class Player : MonoBehaviour {
 				vSpeed = jumpSpeed;
 			}
 		}
-		vSpeed -= gravity * Time.deltaTime;
+
+		if(absorbed)
+			switch (grabbedOrb.type) {
+			case Orb.Type.Speed:
+				vel *= 2f;
+				break;
+			case Orb.Type.Flip:
+				mod = 1;
+				break;
+			}
+
+
+		vSpeed = vSpeed + (gravity * Time.deltaTime) * mod;
 		vel.y = vSpeed;
 
 
 		cc.Move(vel * Time.deltaTime);
-
-
-
 
 		if (grabbedOrb == null) {
 			Ray ray = Camera.main.ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
@@ -88,6 +98,7 @@ public class Player : MonoBehaviour {
 				foreach(Collider c in grabbedOrb.GetComponents<Collider>())
 					c.enabled = true;
 				grabbedOrb = null;
+				absorbed = false;
 			}
 			else if(Input.GetButtonDown("Throw")){
 				Vector3 pos = Camera.main.transform.position + (Camera.main.transform.forward * .35f);
@@ -100,6 +111,10 @@ public class Player : MonoBehaviour {
 					c.enabled = true;
 				b.GetComponent<Rigidbody> ().AddForce (transform.forward * 500);
 				grabbedOrb = null;
+				absorbed = false;
+			}
+			else if(Input.GetButtonDown("Absorb")){
+				absorbed = !absorbed;
 			}
 		}
 	}
