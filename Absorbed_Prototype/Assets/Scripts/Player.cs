@@ -86,6 +86,7 @@ public class Player : MonoBehaviour {
 			grabbedOrb.transform.position = Camera.main.transform.position + (Camera.main.transform.forward * .6f);
 			grabbedOrb.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, transform.rotation.eulerAngles.z);
 
+			// Dropping orb
 			if (Input.GetMouseButtonDown (0)) {
 				Vector3 pos = Camera.main.transform.position + (Camera.main.transform.forward * .35f);
 				Orb b = grabbedOrb.GetComponent<Orb>();
@@ -100,6 +101,7 @@ public class Player : MonoBehaviour {
 				grabbedOrb = null;
 				absorbed = false;
 			}
+			// Throwing orb
 			else if(Input.GetButtonDown("Throw")){
 				Vector3 pos = Camera.main.transform.position + (Camera.main.transform.forward * .35f);
 				Orb b = grabbedOrb.GetComponent<Orb>();
@@ -113,6 +115,7 @@ public class Player : MonoBehaviour {
 				grabbedOrb = null;
 				absorbed = false;
 			}
+			// Absorb orb
 			else if(Input.GetButtonDown("Absorb")){
 				absorbed = !absorbed;
 			}

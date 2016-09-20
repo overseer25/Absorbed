@@ -55,6 +55,11 @@ public class Orb : MonoBehaviour {
 			skip = !skip;
 	}
 
+	void FixedUpdate()
+	{
+		GetComponent<Rigidbody>().AddForce(Physics.gravity * GetComponent<Rigidbody>().mass);
+	}
+
 	public void Hover () {
 		timer += Time.deltaTime * mod;
 		if (timer >= .85f || timer <= .15f)
