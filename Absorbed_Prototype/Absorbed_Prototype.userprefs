@@ -2,13 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Orb.cs" Line="63" Column="15" />
-      <File FileName="Assets/Scripts/Player.cs" Line="99" Column="67" />
-      <File FileName="Assets/Scripts/UIManager.cs" Line="19" Column="3" />
-      <File FileName="Assets/Scripts/LevelManager.cs" Line="29" Column="54" />
-      <File FileName="Assets/Scripts/Bin.cs" Line="8" Column="23" />
-      <File FileName="Assets/Scripts/Zone.cs" Line="32" Column="35" />
+      <File FileName="Assets/Scripts/Orb.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelManager.cs" Line="34" Column="58" />
+      <File FileName="Assets/Scripts/Bin.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Zone.cs" Line="39" Column="3" />
       <File FileName="Assets/Scripts/MainMenu.cs" Line="25" Column="3" />
+      <File FileName="Assets/Scripts/FinishZone.cs" Line="19" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

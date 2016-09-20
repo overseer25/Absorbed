@@ -10,6 +10,8 @@ public class Orb : MonoBehaviour {
 	Color endColor;
 	float timer = .20f;
 	int mod = 1;
+	[HideInInspector]
+	public bool grabbed = false;
 	public enum Type { Basic, Speed, Fire }
 
 	public Type type = Type.Basic;

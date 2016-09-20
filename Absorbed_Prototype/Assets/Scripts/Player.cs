@@ -64,6 +64,7 @@ public class Player : MonoBehaviour {
 
 					if (Input.GetMouseButtonDown (0)) {
 						grabbedOrb = go.GetComponent<Orb> ();
+						grabbedOrb.grabbed = true;
 						foreach (Collider c in go.GetComponents<Collider>())
 							c.enabled = false;
 						grabbedOrb.GetComponent<Rigidbody>().useGravity = false;
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour {
 			if (Input.GetMouseButtonDown (0)) {
 				Vector3 pos = Camera.main.transform.position + (Camera.main.transform.forward * .35f);
 				Orb b = grabbedOrb.GetComponent<Orb>();
+				b.grabbed = false;
 				grabbedOrb.transform.position = pos;
 				b.GetComponent<Rigidbody>().WakeUp();
 				b.GetComponent<Rigidbody>().useGravity = true;

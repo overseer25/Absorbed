@@ -2,11 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MainMenu : MonoBehaviour 
+public class Menu : MonoBehaviour 
 {
-	public Button playButton;
-	public Button exitButton;
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -19,15 +16,5 @@ public class MainMenu : MonoBehaviour
 	void Update ()
 	{
 
-	}
-
-	public void StartGame()
-	{
-		Application.LoadLevel("Prototype");
-	}
-
-	public void ExitGame()
-	{
-		Application.Quit();
 	}
 }

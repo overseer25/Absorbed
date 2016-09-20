@@ -29,9 +29,10 @@ public class LevelManager : MonoBehaviour {
 			finishZone.GetComponent<MeshRenderer> ().material.color = Color.white;
 			finishZone.GetComponent<FinishZone> ().enabled = true;
 			Debug.Log ("Level Complete - open door");
-		}
-		else
+		} else {
+			finishZone.GetComponent<MeshRenderer> ().material.color = Color.black;
 			finishZone.GetComponent<FinishZone> ().enabled = false;
+		}
 	}
 
 	public void ExitLevel()

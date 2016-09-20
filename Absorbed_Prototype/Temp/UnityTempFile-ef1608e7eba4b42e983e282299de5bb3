@@ -8,7 +8,7 @@
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll'
 -define:UNITY_5_3_OR_NEWER
 -define:UNITY_5_4_OR_NEWER
--define:UNITY_5_4_0
+-define:UNITY_5_4_1
 -define:UNITY_5_4
 -define:UNITY_5
 -define:ENABLE_NEW_BUGREPORTER
@@ -82,7 +82,9 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
+'Assets/Menu.cs'
 'Assets/Scripts/Bin.cs'
+'Assets/Scripts/CatchZone.cs'
 'Assets/Scripts/FinishZone.cs'
 'Assets/Scripts/LevelManager.cs'
 'Assets/Scripts/MainMenu.cs'
